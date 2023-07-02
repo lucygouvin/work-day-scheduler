@@ -16,6 +16,7 @@ The application is deployed here: [https://lucygouvin.github.io/work-day-schedul
 1. Click on an hour timeblock, and type the activity you'd like to schedule for that time.
 2. Press the blue button with the save icon to the right of the time block.
 3. The entry is now saved locally. If you refresh the page, the activities will still appear.
+4. A toast will appear at the bottom of the page letting you know that your event was saved. This toast only appears if the text area value was changed.
 4. The function to update the colors on the timeblocks re-triggers at the top of every hour, to ensure the coloring is always accurate.
 
 ![Screenshot showing the current hour is 1pm, and activites scheduled throughout the day](assets/images/screenshot_1.png)
