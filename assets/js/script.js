@@ -1,3 +1,11 @@
+// ADDITIONAL FEATURES TO DO
+// Select start and end hours
+// Add location field
+// Arrows to upcoming and previous days
+// Link to jump back to today's schedule
+
+
+
 // Following do not interact with the DOM, are safe to be called outisde of the $(function(){})
 // Use DayJS to get the current day
 var today = dayjs();
@@ -15,6 +23,7 @@ if (calendar === null) {
 $(function () {
   // Format the day and display it on the HTML element
   $("#currentDay").text(today.format("[Today is ]MMMM D, YYYY"))
+
 
   // Load any locally saved entries
   loadEntry()
@@ -73,8 +82,15 @@ function saveEntry(event) {
   var parentEl = $(event.target).closest(".time-block")
   // Modify the time-block element's id to derive the index at which the activity should be stored in the calendar array
   var index = parseInt(parentEl.attr("id").replace("hour-", ""))
+  // Get the previous value so we can see if it has changed
+  var prevVal = calendar[index]
   var description = parentEl.children(".description").val().trim()
   calendar[index] = description
   // Save to local storage
   localStorage.setItem("calendar", JSON.stringify(calendar))
+  // Show save message only if the event has changed
+  if(prevVal !== description ){
+    var toastEl = $('#saveToast')
+    bootstrap.Toast.getOrCreateInstance(toastEl).show()
+  }
 }
